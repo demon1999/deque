@@ -49,10 +49,10 @@ public:
         bool operator!=(const iterator & other) {
             return we != other.we;
         }
-        T& operator*() {
+        reference operator*() {
             return *(we->data);
         }
-        T* operator->() {
+        pointer operator->() {
            return we->data;
         }
         iterator &operator--() {
@@ -81,7 +81,7 @@ public:
             T,                      // value_type
             long,                      // difference_type
             const T*,               // pointer
-            T&                       // reference
+            const T&                       // reference
     >{
     private:
         node* we;
@@ -95,10 +95,10 @@ public:
         bool operator!=(const const_iterator & other) {
             return we != other.we;
         }
-        const T& operator*() {
+        reference operator*() {
             return *(we->data);
         }
-        const T* operator->() {
+        pointer operator->() {
             return we->data;
         }
 
@@ -139,10 +139,10 @@ public:
             we = a;
         }
     public:
-        T& operator*() {
+        reference operator*() {
             return *(we->data);
         }
-        T* operator->() {
+        pointer operator->() {
             return we->data;
         }
         reverse_iterator &operator--() {
