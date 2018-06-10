@@ -12,9 +12,10 @@ int main() {
         }
         std::cout << "\n";*/
     }
-    my_deque<int>::const_iterator ps0 = qq.begin();
+    //my_deque<int>::const_iterator ps0 = qq.begin();
     my_deque<int>::iterator ps1 = qq.begin();
-    if (ps1 != ps0) {
+    my_deque<int>::const_iterator const ps0 = qq.begin();
+    if (ps0 == ps1) {
         std::cout << "ho ho ho\n";
         return 0;
     }
