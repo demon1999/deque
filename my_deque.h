@@ -49,10 +49,10 @@ public:
         bool operator!=(const iterator & other) {
             return we != other.we;
         }
-        reference operator*() {
+        T& operator*() {
             return *(we->data);
         }
-        pointer operator->() {
+        T* operator->() {
            return we->data;
         }
         iterator &operator--() {
@@ -95,10 +95,10 @@ public:
         bool operator!=(const const_iterator & other) {
             return we != other.we;
         }
-        reference operator*() {
+        const T& operator*() {
             return *(we->data);
         }
-        pointer operator->() {
+        const T* operator->() {
             return we->data;
         }
 
@@ -139,10 +139,10 @@ public:
             we = a;
         }
     public:
-        reference operator*() {
+        T& operator*() {
             return *(we->data);
         }
-        pointer operator->() {
+        T* operator->() {
             return we->data;
         }
         reverse_iterator &operator--() {
