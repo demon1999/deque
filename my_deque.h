@@ -15,7 +15,8 @@ struct my_deque {
         node* prev;
         T data;
         node() {
-            data = next = prev = NULL;
+            data = NULL;
+            next = prev = NULL;
         }
     };
 
@@ -36,11 +37,16 @@ struct my_deque {
         T* operator->() {
            return we->data;
         }
-        iterator operator--() {
+        iterator &operator--() {
             return we->prev;
         }
-
-        iterator operator++(my_deque::iterator a) {
+        iterator operator--(int) {
+            return we->prev;
+        }
+        iterator &operator++() {
+            return we->next;
+        }
+        iterator operator++(int) {
             return we->next;
         }
     };
@@ -63,11 +69,19 @@ struct my_deque {
             return we->data;
         }
 
-        iterator operator--() {
+        const_iterator &operator--() {
             return we->prev;
         }
 
-        iterator operator++(my_deque::iterator a) {
+        const_iterator operator--(int) {
+            return we->prev;
+        }
+
+        const_iterator &operator++() {
+            return we->next;
+        }
+
+        const_iterator operator++(int) {
             return we->next;
         }
     };
@@ -83,23 +97,31 @@ struct my_deque {
         T* operator->() {
             return we->data;
         }
-        iterator operator--() {
+        reverse_iterator &operator--() {
             return we->next;
         }
 
-        iterator operator++(my_deque::iterator a) {
+        reverse_iterator operator--(int) {
+            return we->next;
+        }
+
+        reverse_iterator &operator++() {
             return we->prev;
         }
+        reverse_iterator operator++(int) {
+            return we->prev;
+        }
+
     };
     iterator begin() {
-        return iterator(start.next);
+        return start.next;
     }
     iterator end() {
         return &finish;
     }
 
     iterator begin() const {
-        return iterator(start.next);
+        return start.next;
     }
 
     iterator end() const {
