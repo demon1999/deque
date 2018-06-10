@@ -307,6 +307,8 @@ typename my_deque<T>::iterator my_deque<T>::erase(const_iterator first, const_it
 template<typename T>
 void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque::const_iterator first,
                          my_deque::const_iterator last) {
+    if (last == first)
+        return;
     if ((pos.we->prev) == NULL || (first.we->prev) == NULL) {
         throw std::runtime_error("invalid splice\n");
     }
