@@ -272,6 +272,9 @@ void my_deque<T>::pop_back() {
 
 template<typename T>
 typename my_deque<T>::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
+    if ((pos.we->prev) == NULL) {
+        throw std::runtime_error("invalid insert\n");
+    }
     auto new_node = new node(val);
     (new_node->next) = pos.we;
     (new_node->prev) = ((pos.we)->prev);
@@ -283,8 +286,7 @@ typename my_deque<T>::iterator my_deque<T>::insert(const_iterator pos, const T &
 template<typename T>
 typename my_deque<T>::iterator my_deque<T>::erase(const_iterator pos) {
     if (((pos.we)->prev) == NULL || ((pos.we)->next) == NULL) {
-        std::cout << "erase of nonexisting element\n";
-        exit(0);
+        throw std::runtime_error("invalid erase\n");
     }
     ((pos.we->prev)->next) = ((pos.we)->next);
     ((pos.we->next)->prev) = ((pos.we)->prev);
@@ -306,8 +308,7 @@ template<typename T>
 void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque::const_iterator first,
                          my_deque::const_iterator last) {
     if ((pos.we->prev) == NULL || (first.we->prev) == NULL) {
-        std::cout << "bad splice\n";
-        exit(0);
+        throw std::runtime_error("invalid splice\n");
     }
     iterator pos_prev = (pos.we->prev);
     iterator last_prev = (last.we->prev);

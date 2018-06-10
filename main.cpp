@@ -3,6 +3,7 @@
 
 int main() {
     my_deque<int> qq;
+    //qq.pop_back();
     for (int i = 0; i < 20; i++) {
         qq.push_back(i);
         for (int &q : qq) {
@@ -15,7 +16,7 @@ int main() {
     my_deque<int>::const_iterator ps3 = qq.cbegin();
     auto it = ps2++;
     std::cout << (*it) << std::endl;
-    exit(0);
+    ps2--;
     for (int i = 0; i < 3; i++) ps++;
     for (int i = 0; i < 7; i++) ps2++;
     for (int i = 0; i < 11; i++) ps3++;
