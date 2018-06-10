@@ -5,24 +5,29 @@ template struct my_deque<int>;
 
 int main() {
     my_deque<int> qq;
-    my_deque<int> pp;
-    pp.push_front(0);
-    swap(qq, pp);
-    for (int &q : qq)
-        std::cout << q << " ";
+    qq.push_back(1);
+    qq.push_back(2);
+    qq.push_back(3);
+    qq.push_back(4);
+    my_deque<int> pp = qq;
+
+//    pp.push_front(0);
+//    swap(qq, pp);
+//    for (int &q : qq)
+//        std::cout << q << " ";
     std::cout << "\n";
     //my_deque<int> qq;
     //my_deque<int> const pp;
     //pp.end();
     //qq.pop_back();
-    for (int i = 0; i < 20; i++) {
-        qq.push_back(i);
+    //for (int i = 0; i < 20; i++) {
+    //    qq.push_back(i);
         /*std::cout << qq.back() << "\n";
         for (int &q : qq) {
             std::cout << q << " ";
         }
         std::cout << "\n";*/
-    }
+    //}
     //my_deque<int>::const_iterator ps0 = qq.begin();
     /*my_deque<int>::iterator ps1 = qq.begin();
     my_deque<int>::const_iterator const ps0 = qq.begin();
