@@ -187,6 +187,8 @@ public:
     my_deque& operator=(my_deque const &other);
     void push_back(T a);
     void push_front(T a);
+    T front();
+    T back();
     void pop_back();
     void pop_front();
     iterator insert(const_iterator pos, T const &val);
@@ -321,6 +323,16 @@ void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque
     ((last.we)->prev) = first_prev.we;
     ((last_prev.we)->next) = pos.we;
     ((pos.we)->prev) = last_prev.we;
+}
+
+template<typename T>
+T my_deque<T>::front() {
+    return *begin();
+}
+
+template<typename T>
+T my_deque<T>::back() {
+    return *rbegin();
 }
 
 #endif //DEQUE_MY_DEQUE_H
