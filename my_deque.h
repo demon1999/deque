@@ -18,8 +18,8 @@ struct my_deque {
             data = NULL;
             next = prev = NULL;
         }
-        node(T a) {
-            data = a;
+        node(const T& a) {
+            data = new T(a);
             next = prev = NULL;
         }
         ~node() {
