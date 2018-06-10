@@ -33,10 +33,10 @@ public:
     struct iterator {
     private:
         node* we;
-    public:
         iterator(node *a) {
             we = a;
         }
+    public:
         bool operator==(const iterator & other) {
             return we == other.we;
         }
@@ -73,10 +73,10 @@ public:
     struct const_iterator {
     private:
         node* we;
-    public:
         const_iterator(node *a) {
             we = a;
         }
+    public:
         bool operator==(const const_iterator & other) {
             return we == other.we;
         }
@@ -117,10 +117,10 @@ public:
     struct reverse_iterator {
     private:
         node* we;
-    public:
         reverse_iterator(node *a) {
             we = a;
         }
+    public:
         T& operator*() {
             return *(we->data);
         }
