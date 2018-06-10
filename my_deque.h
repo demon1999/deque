@@ -80,7 +80,7 @@ public:
             std::bidirectional_iterator_tag,   // iterator_category
             T,                      // value_type
             long,                      // difference_type
-            T*,               // pointer
+            const T*,               // pointer
             T&                       // reference
     >{
     private:
