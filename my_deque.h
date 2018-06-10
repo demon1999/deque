@@ -10,6 +10,7 @@
 
 template <typename T>
 struct my_deque {
+private:
     struct node {
         node* next;
         node* prev;
@@ -28,6 +29,7 @@ struct my_deque {
         }
     };
 
+public:
     struct iterator {
         node* we;
         iterator(node *a) {
