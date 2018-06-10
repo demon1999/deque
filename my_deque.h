@@ -26,7 +26,9 @@ private:
         void swap(node &a) {
             std::swap(next, a.next);
             std::swap(prev, a.prev);
-            std::swap(data, a.data);
+            T q = (*a.data);
+            (*data) = (*a.data);
+            (*a.data) = q;
         }
         ~node() {
             if (data != NULL)
