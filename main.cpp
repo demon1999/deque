@@ -14,7 +14,7 @@ int main() {
     }
     my_deque<int>::const_iterator ps0 = qq.begin();
     my_deque<int>::iterator ps1 = qq.begin();
-    if (ps1 == ps0) {
+    if (ps1 != ps0) {
         std::cout << "ho ho ho\n";
         return 0;
     }

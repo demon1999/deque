@@ -49,6 +49,9 @@ public:
         bool operator==(const const_iterator & other) {
             return const_iterator(we) == other.we;
         }
+        bool operator!=(const const_iterator & other) {
+            return const_iterator(we) == other.we;
+        }
         bool operator!=(const iterator & other) {
             return we != other.we;
         }
