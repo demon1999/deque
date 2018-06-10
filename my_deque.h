@@ -36,6 +36,13 @@ struct my_deque {
         T* operator->() {
            return we->data;
         }
+        iterator operator--() {
+            return we->prev;
+        }
+
+        iterator operator++(my_deque::iterator a) {
+            return we->next;
+        }
     };
 
     struct const_iterator {
@@ -55,6 +62,14 @@ struct my_deque {
         const T* operator->() {
             return we->data;
         }
+
+        iterator operator--() {
+            return we->prev;
+        }
+
+        iterator operator++(my_deque::iterator a) {
+            return we->next;
+        }
     };
 
     struct reverse_iterator {
@@ -68,6 +83,13 @@ struct my_deque {
         T* operator->() {
             return we->data;
         }
+        iterator operator--() {
+            return we->next;
+        }
+
+        iterator operator++(my_deque::iterator a) {
+            return we->prev;
+        }
     };
     iterator begin() {
         return iterator(start.next);
@@ -76,20 +98,20 @@ struct my_deque {
         return &finish;
     }
 
-    const_iterator begin() {
-        return start.next;
+    iterator begin() const {
+        return iterator(start.next);
     }
 
-    const_iterator end() {
+    iterator end() const {
         return &finish;
     }
 
-    iterator operator--(my_deque::iterator a) {
-        return a.we->prev;
+    const_iterator cbegin() {
+        return start.next;
     }
 
-    iterator operator++(my_deque::iterator a) {
-        return a.we->next;
+    const_iterator cend() {
+        return &finish;
     }
 
     reverse_iterator rbegin() {
@@ -98,14 +120,6 @@ struct my_deque {
 
     reverse_iterator rend() {
         return &start;
-    }
-
-    reverse_iterator operator--(my_deque::reverse_iterator a) {
-        return a.we->next;
-    }
-
-    reverse_iterator operator++(my_deque::reverse_iterator a) {
-        return a.we->prev;
     }
 
     my_deque();
@@ -156,7 +170,7 @@ void my_deque<T>::clear() {
 }
 
 template<typename T>
-my_deque &my_deque<T>::operator=(my_deque const &other) {
+my_deque<T> &my_deque<T>::operator=(my_deque const &other) {
     clear();
     copy_data(other);
 }
@@ -198,7 +212,7 @@ void my_deque<T>::pop_back() {
 }
 
 template<typename T>
-my_deque::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
+typename my_deque<T>::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
     auto new_node = new node();
     (new_node->data) = val;
     (new_node->next) = pos.we;
@@ -209,7 +223,7 @@ my_deque::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
 }
 
 template<typename T>
-my_deque<T>::iterator my_deque<T>::erase(const_iterator pos) {
+typename my_deque<T>::iterator my_deque<T>::erase(const_iterator pos) {
     if (((pos.we)->prev) == NULL || ((pos.we)->next) == NULL) {
         std::cout << "erase of nonexisting element\n";
         exit(0);
@@ -222,7 +236,7 @@ my_deque<T>::iterator my_deque<T>::erase(const_iterator pos) {
 }
 
 template<typename T>
-my_deque<T>::iterator my_deque<T>::erase(const_iterator first, const_iterator last) {
+typename my_deque<T>::iterator my_deque<T>::erase(const_iterator first, const_iterator last) {
     if (first != last)
         return erase(erase(first).we, last);
     else
