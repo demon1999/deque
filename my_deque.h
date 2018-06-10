@@ -246,7 +246,7 @@ void my_deque<T>::pop_back() {
 template<typename T>
 typename my_deque<T>::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
     auto new_node = new node();
-    (new_node->data) = val;
+    (*(new_node->data)) = val;
     (new_node->next) = pos.we;
     (new_node->prev) = ((pos.we)->prev);
     ((new_node->next)->prev) = new_node;
