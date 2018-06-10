@@ -4,7 +4,11 @@
 int main() {
     my_deque<int> qq;
     my_deque<int> pp;
+    pp.push_front(0);
     swap(qq, pp);
+    for (int &q : qq)
+        std::cout << q << " ";
+    std::cout << "\n";
     //my_deque<int> qq;
     //my_deque<int> const pp;
     //pp.end();
