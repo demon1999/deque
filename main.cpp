@@ -18,7 +18,7 @@ int main() {
         std::cout << "\n";*/
     }
     //my_deque<int>::const_iterator ps0 = qq.begin();
-    my_deque<int>::iterator ps1 = qq.begin();
+    /*my_deque<int>::iterator ps1 = qq.begin();
     my_deque<int>::const_iterator const ps0 = qq.begin();
     if (ps0 == ps1) {
         std::cout << "ho ho ho\n";
@@ -39,6 +39,6 @@ int main() {
     for (int &q : qq) {
         std::cout << q << " ";
     }
-    std::cout << "\n";
+    std::cout << "\n";*/
     return 0;
 }
