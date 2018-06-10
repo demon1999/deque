@@ -2,12 +2,12 @@
 #include "my_deque.h"
 
 int main() {
-    //my_deque<int> qq;
-    //my_deque<int> pp;
-    //swap(qq, pp);
     my_deque<int> qq;
-    my_deque<int> const pp;
-    pp.rend();
+    my_deque<int> pp;
+    swap(qq, pp);
+    //my_deque<int> qq;
+    //my_deque<int> const pp;
+    //pp.end();
     //qq.pop_back();
     for (int i = 0; i < 20; i++) {
         qq.push_back(i);

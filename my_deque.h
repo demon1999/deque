@@ -203,11 +203,11 @@ public:
         return &finish;
     }
 
-    iterator begin() const {
+    const_iterator begin() const {
         return start.next;
     }
 
-    iterator end() const {
+    const_iterator end() const {
         return (finish.prev)->next;
     }
 
