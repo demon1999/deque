@@ -225,17 +225,17 @@ void my_deque<T>::copy_data(my_deque const &other) {
 
 template<typename T>
 void my_deque<T>::push_back(T a) {
-    insert(end(), a);
+    insert(cend(), a);
 }
 
 template<typename T>
 void my_deque<T>::push_front(T a) {
-    insert(begin(), a);
+    insert(cbegin(), a);
 }
 
 template<typename T>
 void my_deque<T>::pop_front() {
-    erase(begin());
+    erase(cbegin());
 }
 
 template<typename T>
