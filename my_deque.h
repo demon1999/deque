@@ -28,7 +28,6 @@ private:
                 delete data;
         }
     };
-
 public:
     struct iterator : public std::iterator<
             std::bidirectional_iterator_tag,   // iterator_category
