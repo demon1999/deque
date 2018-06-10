@@ -12,6 +12,8 @@ int main() {
         }
         std::cout << "\n";*/
     }
+    my_deque<int>::const_iterator ps0 = qq.begin();
+
     my_deque<int>::const_iterator ps = qq.cbegin();
     my_deque<int>::const_iterator ps2 = qq.cbegin();
     my_deque<int>::const_iterator ps3 = qq.cbegin();

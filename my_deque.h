@@ -74,6 +74,7 @@ public:
             return ne;
         }
         friend struct my_deque<T>;
+        friend struct const_iterator;
     };
 
     struct const_iterator : public std::iterator<
@@ -89,6 +90,9 @@ public:
             we = a;
         }
     public:
+        const_iterator(const iterator & other) {
+            we = other.we;
+        }
         bool operator==(const const_iterator & other) {
             return we == other.we;
         }
