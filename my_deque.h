@@ -23,6 +23,11 @@ private:
             data = new T(a);
             next = prev = NULL;
         }
+        void swap(node &a) {
+            std::swap(next, a.next);
+            std::swap(prev, a.prev);
+            std::swap(data, a.data);
+        }
         ~node() {
             if (data != NULL)
                 delete data;
@@ -262,8 +267,8 @@ public:
     bool empty();
     void clear();
     void swap(my_deque & a) {
-        std::swap(start, a.start);
-        std::swap(finish, a.finish);
+        start.swap(a.start);
+        finish.swap(a.finish);
     }
     //friend template<typename T> void swap(my_deque<T> &a, my_deque<T> &b);
 private:
