@@ -147,9 +147,9 @@ public:
             we = we->prev;
             return ne;
         }
-
         friend struct my_deque<T>;
     };
+
     iterator begin() {
         return start.next;
     }
@@ -181,6 +181,14 @@ public:
         return &start;
     }
 
+    reverse_iterator rbegin() const {
+        return (finish.prev);
+    }
+
+    reverse_iterator rend() const {
+        return &start;
+    }
+
     my_deque();
     my_deque(my_deque const &other);
     ~my_deque();
@@ -189,6 +197,8 @@ public:
     void push_front(T a);
     T front();
     T back();
+    T front() const;
+    T back() const;
     void pop_back();
     void pop_front();
     iterator insert(const_iterator pos, T const &val);
@@ -201,6 +211,14 @@ private:
     void copy_data(my_deque const &other);
     node start, finish;
 };
+
+template<typename T>
+typename my_deque<T>::iterator next(typename my_deque<T>::iterator a, size_t n = 1) {
+    for (size_t i = 0; i < n; i++) {
+        a++;
+    }
+    return a;
+}
 
 template<typename T>
 my_deque<T>::my_deque() {
@@ -332,6 +350,16 @@ T my_deque<T>::front() {
 
 template<typename T>
 T my_deque<T>::back() {
+    return *rbegin();
+}
+
+template<typename T>
+T my_deque<T>::front() const {
+    return *begin();
+}
+
+template<typename T>
+T my_deque<T>::back() const {
     return *rbegin();
 }
 
