@@ -30,7 +30,13 @@ private:
     };
 
 public:
-    struct iterator {
+    struct iterator : public std::iterator<
+            std::input_iterator_tag,   // iterator_category
+            long,                      // value_type
+            long,                      // difference_type
+            const long*,               // pointer
+            long                       // reference
+    > {
     private:
         node* we;
         iterator(node *a) {
@@ -70,7 +76,13 @@ public:
         friend struct my_deque<T>;
     };
 
-    struct const_iterator {
+    struct const_iterator : public std::iterator<
+            std::input_iterator_tag,   // iterator_category
+            long,                      // value_type
+            long,                      // difference_type
+            const long*,               // pointer
+            long                       // reference
+    >{
     private:
         node* we;
         const_iterator(node *a) {
@@ -114,7 +126,13 @@ public:
         friend struct my_deque<T>;
     };
 
-    struct reverse_iterator {
+    struct reverse_iterator : public std::iterator<
+            std::input_iterator_tag,   // iterator_category
+            long,                      // value_type
+            long,                      // difference_type
+            const long*,               // pointer
+            long                       // reference
+    >{
     private:
         node* we;
         reverse_iterator(node *a) {
@@ -173,6 +191,14 @@ public:
         return &finish;
     }
 
+    const_iterator cbegin() const {
+        return start.next;
+    }
+
+    const_iterator cend() const {
+        return &finish;
+    }
+
     reverse_iterator rbegin() {
         return (finish.prev);
     }
@@ -211,14 +237,14 @@ private:
     void copy_data(my_deque const &other);
     node start, finish;
 };
-
+/*
 template<typename T>
 typename my_deque<T>::iterator next(typename my_deque<T>::iterator a, size_t n = 1) {
     for (size_t i = 0; i < n; i++) {
         a++;
     }
     return a;
-}
+}*/
 
 template<typename T>
 my_deque<T>::my_deque() {
