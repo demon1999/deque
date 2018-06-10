@@ -208,7 +208,7 @@ public:
     }
 
     iterator end() const {
-        return &finish;
+        return (finish.prev)->next;
     }
 
     const_iterator cbegin() {
@@ -224,7 +224,7 @@ public:
     }
 
     const_iterator cend() const {
-        return &finish;
+        return (finish.prev)->next;
     }
 
     reverse_iterator rbegin() {
@@ -240,7 +240,7 @@ public:
     }
 
     reverse_iterator rend() const {
-        return &start;
+        return (start.next)->prev;
     }
 
     my_deque();
@@ -300,6 +300,7 @@ template<typename T>
 my_deque<T> &my_deque<T>::operator=(my_deque const &other) {
     clear();
     copy_data(other);
+    return *this;
 }
 
 template<typename T>
