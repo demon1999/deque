@@ -31,7 +31,9 @@ private:
 
 public:
     struct iterator {
+    private:
         node* we;
+    public:
         iterator(node *a) {
             we = a;
         }
@@ -65,10 +67,13 @@ public:
             iterator ne = we;
             return ne;
         }
+        friend struct my_deque<T>;
     };
 
     struct const_iterator {
+    private:
         node* we;
+    public:
         const_iterator(node *a) {
             we = a;
         }
@@ -106,10 +111,13 @@ public:
             const_iterator ne = we;
             return ne;
         }
+        friend struct my_deque<T>;
     };
 
     struct reverse_iterator {
+    private:
         node* we;
+    public:
         reverse_iterator(node *a) {
             we = a;
         }
@@ -140,6 +148,7 @@ public:
             return ne;
         }
 
+        friend struct my_deque<T>;
     };
     iterator begin() {
         return start.next;
