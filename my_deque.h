@@ -30,11 +30,17 @@ struct my_deque {
         bool operator!=(const iterator & other) {
             return we != other.we;
         }
+        T& operator*() {
+            return *(we->data);
+        }
+        T* operator->() {
+           return we->data;
+        }
     };
 
     struct const_iterator {
         node* we;
-        const_iterator(const node *a) {
+        const_iterator(node *a) {
             we = a;
         }
         bool operator==(const const_iterator & other) {
@@ -43,12 +49,24 @@ struct my_deque {
         bool operator!=(const const_iterator & other) {
             return we != other.we;
         }
+        const T& operator*() {
+            return *(we->data);
+        }
+        const T* operator->() {
+            return we->data;
+        }
     };
 
     struct reverse_iterator {
         node* we;
         reverse_iterator(node *a) {
             we = a;
+        }
+        T& operator*() {
+            return *(we->data);
+        }
+        T* operator->() {
+            return we->data;
         }
     };
 
@@ -232,6 +250,13 @@ my_deque::iterator my_deque<T>::erase(const_iterator first, const_iterator last)
         return erase(erase(first).we, last);
     else
         return last.we;
+}
+
+template<typename T>
+void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque::const_iterator first,
+                         my_deque::const_iterator last) {
+
+
 }
 
 #endif //DEQUE_MY_DEQUE_H
