@@ -6,7 +6,7 @@
 #define DEQUE_MY_DEQUE_H
 
 #include <cstdio>
-
+#include <stdexcept>
 
 template <typename T>
 struct my_deque {
