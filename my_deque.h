@@ -29,6 +29,7 @@ private:
         }
     };
 public:
+    struct const_iterator;
     struct iterator : public std::iterator<
             std::bidirectional_iterator_tag,   // iterator_category
             T,                      // value_type
@@ -44,6 +45,9 @@ public:
     public:
         bool operator==(const iterator & other) {
             return we == other.we;
+        }
+        bool operator==(const const_iterator & other) {
+            return const_iterator(we) == other.we;
         }
         bool operator!=(const iterator & other) {
             return we != other.we;
@@ -236,18 +240,12 @@ public:
     void splice(const_iterator pos, my_deque &other, const_iterator first, const_iterator last);
     bool empty();
     void clear();
+    friend void swap(my_deque<T> a, my_deque<T> b);
 private:
     void copy_data(my_deque const &other);
     node start, finish;
 };
-/*
-template<typename T>
-typename my_deque<T>::iterator next(typename my_deque<T>::iterator a, size_t n = 1) {
-    for (size_t i = 0; i < n; i++) {
-        a++;
-    }
-    return a;
-}*/
+
 
 template<typename T>
 my_deque<T>::my_deque() {
@@ -392,4 +390,9 @@ T my_deque<T>::back() const {
     return *rbegin();
 }
 
+template<typename T>
+void swap(my_deque<T> a, my_deque<T> &b) {
+    swap(a.start, b.start);
+    swap(a.finish, b.finish);
+}
 #endif //DEQUE_MY_DEQUE_H
