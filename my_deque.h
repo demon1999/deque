@@ -18,6 +18,10 @@ struct my_deque {
             data = NULL;
             next = prev = NULL;
         }
+        node(T a) {
+            data = a;
+            next = prev = NULL;
+        }
         ~node() {
             if (data != NULL)
                 delete data;
@@ -245,8 +249,7 @@ void my_deque<T>::pop_back() {
 
 template<typename T>
 typename my_deque<T>::iterator my_deque<T>::insert(const_iterator pos, const T &val) {
-    auto new_node = new node();
-    (*(new_node->data)) = val;
+    auto new_node = new node(val);
     (new_node->next) = pos.we;
     (new_node->prev) = ((pos.we)->prev);
     ((new_node->next)->prev) = new_node;
