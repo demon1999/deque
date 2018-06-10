@@ -24,11 +24,31 @@ private:
             next = prev = NULL;
         }
         void swap(node &a) {
+            if (next != NULL) {
+                next->prev = &a;
+            }
+            if (prev != NULL) {
+                prev->next = &a;
+            }
+            if (a.next != NULL) {
+                a.next->prev = this;
+            }
+            if (a.prev != NULL) {
+                a.prev->next = this;
+            }
             std::swap(next, a.next);
             std::swap(prev, a.prev);
-            T q = (*a.data);
-            (*data) = (*a.data);
-            (*a.data) = q;
+            if (a.data == NULL) {
+                a.data = data;
+                data = NULL;
+            } else if (data == NULL) {
+                data = a.data;
+                a.data = NULL;
+            } else {
+                T q = (*a.data);
+                (*data) = (*a.data);
+                (*a.data) = q;
+            }
         }
         ~node() {
             if (data != NULL)
