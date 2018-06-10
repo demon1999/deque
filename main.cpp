@@ -1,6 +1,8 @@
 #include <iostream>
 #include "my_deque.h"
 
+template struct my_deque<int>;
+
 int main() {
     my_deque<int> qq;
     my_deque<int> pp;

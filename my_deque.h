@@ -200,6 +200,15 @@ public:
         T* operator->() {
             return we->data;
         }
+
+        bool operator==(const reverse_iterator & other) {
+            return we == other.we;
+        }
+
+        bool operator==(const reverse_iterator & other) const {
+            return we == other.we;
+        }
+
         reverse_iterator &operator--() {
             we = we->next;
             return *this;
@@ -338,7 +347,7 @@ template<typename T>
 void my_deque<T>::copy_data(my_deque const &other) {
     iterator q = &start;
     node* prv = NULL;
-    for (iterator we = other.begin(); we != other.end(); we++) {
+    for (const_iterator we = other.begin(); we != other.end(); we++) {
         auto me = new node();
         me->data = we.we->data;
         me->prev = prv;
