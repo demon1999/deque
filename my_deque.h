@@ -294,19 +294,19 @@ typename my_deque<T>::iterator my_deque<T>::erase(const_iterator first, const_it
 template<typename T>
 void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque::const_iterator first,
                          my_deque::const_iterator last) {
-    if ((pos->prev) == NULL || (first->prev) == NULL) {
+    if ((pos.we->prev) == NULL || (first.we->prev) == NULL) {
         std::cout << "bad splice\n";
         exit(0);
     }
-    iterator pos_prev = (pos->prev);
-    iterator last_prev = (last->prev);
-    iterator first_prev = (first->prev);
-    (pos_prev->next) = first;
-    (first->prev) = pos_prev;
-    (first_prev->next) = last;
-    (last->prev) = first_prev;
-    (last_prev->next) = pos;
-    (pos->prev) = last_prev;
+    iterator pos_prev = (pos.we->prev);
+    iterator last_prev = (last.we->prev);
+    iterator first_prev = (first.we->prev);
+    ((pos_prev.we)->next) = first.we;
+    ((first.we)->prev) = pos_prev.we;
+    ((first_prev.we)->next) = last.we;
+    ((last.we)->prev) = first_prev.we;
+    ((last_prev.we)->next) = pos.we;
+    ((pos.we)->prev) = last_prev.we;
 }
 
 #endif //DEQUE_MY_DEQUE_H
