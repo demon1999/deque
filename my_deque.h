@@ -31,11 +31,11 @@ private:
 
 public:
     struct iterator : public std::iterator<
-            std::input_iterator_tag,   // iterator_category
-            long,                      // value_type
+            std::bidirectional_iterator_tag,   // iterator_category
+            T,                      // value_type
             long,                      // difference_type
-            const long*,               // pointer
-            long                       // reference
+            T*,               // pointer
+            T&                       // reference
     > {
     private:
         node* we;
@@ -77,11 +77,11 @@ public:
     };
 
     struct const_iterator : public std::iterator<
-            std::input_iterator_tag,   // iterator_category
-            long,                      // value_type
+            std::bidirectional_iterator_tag,   // iterator_category
+            T,                      // value_type
             long,                      // difference_type
-            const long*,               // pointer
-            long                       // reference
+            T*,               // pointer
+            T&                       // reference
     >{
     private:
         node* we;
@@ -127,11 +127,11 @@ public:
     };
 
     struct reverse_iterator : public std::iterator<
-            std::input_iterator_tag,   // iterator_category
-            long,                      // value_type
+            std::bidirectional_iterator_tag,   // iterator_category
+            T,                      // value_type
             long,                      // difference_type
-            const long*,               // pointer
-            long                       // reference
+            T*,               // pointer
+            T&                       // reference
     >{
     private:
         node* we;

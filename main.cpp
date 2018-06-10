@@ -6,16 +6,17 @@ int main() {
     //qq.pop_back();
     for (int i = 0; i < 20; i++) {
         qq.push_back(i);
-        std::cout << qq.back() << "\n";
+        /*std::cout << qq.back() << "\n";
         for (int &q : qq) {
             std::cout << q << " ";
         }
-        std::cout << "\n";
+        std::cout << "\n";*/
     }
     my_deque<int>::const_iterator ps = qq.cbegin();
     my_deque<int>::const_iterator ps2 = qq.cbegin();
     my_deque<int>::const_iterator ps3 = qq.cbegin();
-    std::next(qq.begin());
+    auto v = std::next(qq.begin());
+    std::cout << (*v) << std::endl;
     auto it = ps2++;
     std::cout << (*it) << std::endl;
     ps2--;
