@@ -209,6 +209,14 @@ public:
             return we == other.we;
         }
 
+        bool operator!=(const reverse_iterator & other) {
+            return we != other.we;
+        }
+
+        bool operator!=(const reverse_iterator & other) const {
+            return we != other.we;
+        }
+
         reverse_iterator &operator--() {
             we = we->next;
             return *this;
