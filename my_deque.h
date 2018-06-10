@@ -47,7 +47,7 @@ struct my_deque {
         }
         iterator &operator--() {
             we = we->prev;
-            return we;
+            return *this;
         }
         iterator operator--(int) {
             iterator pr = we->prev;
@@ -55,7 +55,7 @@ struct my_deque {
         }
         iterator &operator++() {
             we = we->next;
-            return we;
+            return *this;
         }
         iterator operator++(int) {
             iterator ne = we->next;
@@ -83,7 +83,7 @@ struct my_deque {
 
         const_iterator &operator--() {
             we = we->prev;
-            return we;
+            return *this;
         }
 
         const_iterator operator--(int) {
@@ -93,7 +93,7 @@ struct my_deque {
 
         const_iterator &operator++() {
             we = we->next;
-            return we;
+            return *this;
         }
 
         const_iterator operator++(int) {
@@ -115,7 +115,7 @@ struct my_deque {
         }
         reverse_iterator &operator--() {
             we = we->next;
-            return we;
+            return *this;
         }
 
         reverse_iterator operator--(int) {
@@ -125,7 +125,7 @@ struct my_deque {
 
         reverse_iterator &operator++() {
             we = we->prev;
-            return we;
+            return *this;
         }
         reverse_iterator operator++(int) {
             reverse_iterator ne = we->prev;
