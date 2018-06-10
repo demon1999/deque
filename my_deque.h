@@ -23,6 +23,9 @@ private:
             data = new T(a);
             next = prev = NULL;
         }
+        void swap(node &a) {
+            swap(a, *this);
+        }
         ~node() {
             if (data != NULL)
                 delete data;
@@ -261,7 +264,11 @@ public:
     void splice(const_iterator pos, my_deque &other, const_iterator first, const_iterator last);
     bool empty();
     void clear();
-    friend void swap(my_deque<T> &a, my_deque<T> &b);
+    void swap(my_deque & a) {
+        start.swap(a.start);
+        finish.swap(a.finish);
+    }
+    //friend template<typename T> void swap(my_deque<T> &a, my_deque<T> &b);
 private:
     void copy_data(my_deque const &other);
     node start, finish;
@@ -414,7 +421,6 @@ T my_deque<T>::back() const {
 
 template<typename T>
 void swap(my_deque<T>& a, my_deque<T>& b) {
-    swap(a.start, b.start);
-    swap(a.finish, b.finish);
+    a.swap(b);
 }
 #endif //DEQUE_MY_DEQUE_H
