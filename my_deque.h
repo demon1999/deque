@@ -13,10 +13,14 @@ struct my_deque {
     struct node {
         node* next;
         node* prev;
-        T data;
+        T* data;
         node() {
             data = NULL;
             next = prev = NULL;
+        }
+        ~node() {
+            if (data != NULL)
+                delete data;
         }
     };
 
@@ -161,7 +165,7 @@ struct my_deque {
     iterator insert(const_iterator pos, T const &val);
     iterator erase(const_iterator pos);
     iterator erase(const_iterator first, const_iterator last);
-    //void splice(const_iterator pos, my_deque &other, const_iterator first, const_iterator last);
+    void splice(const_iterator pos, my_deque &other, const_iterator first, const_iterator last);
     bool empty();
     void clear();
 private:
@@ -271,12 +275,23 @@ typename my_deque<T>::iterator my_deque<T>::erase(const_iterator first, const_it
         return last.we;
 }
 
-/*
+
 template<typename T>
 void my_deque<T>::splice(my_deque::const_iterator pos, my_deque &other, my_deque::const_iterator first,
                          my_deque::const_iterator last) {
-
-
-}*/
+    if ((pos->prev) == NULL || (first->prev) == NULL) {
+        std::cout << "bad splice\n";
+        exit(0);
+    }
+    iterator pos_prev = (pos->prev);
+    iterator last_prev = (last->prev);
+    iterator first_prev = (first->prev);
+    (pos_prev->next) = first;
+    (first->prev) = pos_prev;
+    (first_prev->next) = last;
+    (last->prev) = first_prev;
+    (last_prev->next) = pos;
+    (pos->prev) = last_prev;
+}
 
 #endif //DEQUE_MY_DEQUE_H

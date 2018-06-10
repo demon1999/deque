@@ -7,7 +7,10 @@ int main() {
         if (i % 2) qq.push_back(i);
         else
             qq.push_front(i);
-        for (my_deque<int>)
+        for (my_deque<int>::iterator q = qq.begin(); q != qq.end(); q++) {
+            std::cout << (*q) << " ";
+        }
+        std::cout << "\n";
     }
     return 0;
 }
